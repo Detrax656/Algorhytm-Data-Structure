@@ -1,0 +1,134 @@
+//Списки
+- Python :
+li = ['a', '1', 'b', '2', 'c', '3']
+li_1 = li[0::2]
+li_2 = li[1::2]
+del li
+print(li_1, li_2, sep='\n\n')
+
+
+- C++ :
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    vector<string> li = {"a", "1", "b", "2", "c", "3"};
+    vector<string> li_1, li_2;
+
+    for (int i = 0; i < li.size(); i++) {
+        if (i % 2 == 0) 
+            li_1.push_back(li[i]);
+        else 
+            li_2.push_back(li[i]);
+    }
+
+    li.clear(); // удаляем список
+
+    // выводим результат
+    for (string s : li_1) cout << s << " ";
+    cout << "\n\n";
+    for (string s : li_2) cout << s << " ";
+    return 0;
+}
+
+
+- Java :
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> li = new ArrayList<>();
+        li.add("a"); li.add("1"); li.add("b"); li.add("2"); li.add("c"); li.add("3");
+
+        ArrayList<String> li_1 = new ArrayList<>();
+        ArrayList<String> li_2 = new ArrayList<>();
+
+        for (int i = 0; i < li.size(); i++) {
+            if (i % 2 == 0)
+                li_1.add(li.get(i));
+            else
+                li_2.add(li.get(i));
+        }
+
+        li.clear(); // удаляем список
+
+        System.out.println(li_1 + "\n\n" + li_2);
+    }
+}
+
+
+
+//Стэк
+- Python :
+stack = []
+stack.append("a")
+stack.append("b")
+stack.append("c")
+
+while stack:
+    print(stack.pop())
+
+
+- C++ :
+#include <iostream>
+#include <stack>
+using namespace std;
+
+int main() {
+    stack<string> st;
+    st.push("a");
+    st.push("b");
+    st.push("c");
+
+    while (!st.empty()) {
+        cout << st.top() << endl;
+        st.pop();
+    }
+    return 0;
+}
+
+
+
+- Java :
+import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) {
+        Stack<String> st = new Stack<>();
+        st.push("a");
+        st.push("b");
+        st.push("c");
+
+        while (!st.isEmpty()) {
+            System.out.println(st.pop());
+        }
+    }
+}
+
+//Анализ:
+
+-Списки:
+
+Python : В Python синтаксис короче и гораздо проще: срезы (li[0::2]) позволяют легко отделить элементы без циклов и всяких сложных операций, 
+можно сразу сделать новый список без цикла и вывести его в одну строку, легко и удобно.
+В C++ и Java же приходится использовать цикл и вручную добавлять элементы в новые контейнеры с методами типо vector в C++ и ArrayList в Java.
+
+C++ : из-за того что в C++ типизация статическая нужно подключать библиотеку и объявлять тип данных и также надо возиться с циклами, вручную перебирать элементы и добавлять их. 
+Код быстрее работает, но писать его сложнее.
+
+Java : похожа на C++, всё делается через методы (.add, .get, .clear) но Код часто длинный и писать дольше.
+
+-Стэки:
+
+Python : Нет отдельного класса для стека поэтому используется обычный список через list а для добавления .append(), для удаления .pop(). Всё интуитивно и занимает пару строк. Самый легкий и простой вариант
+C++ : Есть отдельный контейнер stack. Он работает только как стек: можно добавлять через push, смотреть верхний элемент через top, убирать через pop, проверять пустоту с empty. Код чуть длиннее но тоже не сильно сложный, 
+есть плюсы в том что существует отдельный метод для стэка, смотриться понятно и чисто.
+Java : Есть встроенный класс Stack который похож на C++: есть методы .push(), .pop(), .isEmpty() но Java более многословна, требует например объявление public class Main.
+//Итоги Анализа:
+
+Python — простой и компактный.
+
+C++ — строгий, быстрый, но более сложный.
+
+Java — более читаемый и строгий, но длинноватый.
